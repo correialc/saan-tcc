@@ -1,0 +1,144 @@
+
+\documentclass[
+	12pt,				
+	oneside,
+	a4paper,
+	english,
+	brazil,
+	]{abntex2}
+
+
+% Pacotes fundamentais 
+\usepackage{helvet}			
+\usepackage[T1]{fontenc}		
+\usepackage[utf8]{inputenc}		
+\usepackage{indentfirst}		
+\usepackage{color}				
+\usepackage{graphicx}			
+\usepackage{microtype} 			
+% ---
+	
+
+% Pacotes de citações
+\usepackage[brazilian,hyperpageref]{backref}	 
+\usepackage[alf]{abntex2cite}	% Citações padrão ABNT
+
+% Informações de dados para CAPA e FOLHA DE ROSTO
+\titulo{\Large{CLASSIFICAÇÃO DE SEGMENTOS EM ATOS NORMATIVOS ATRAVÉS DE PROCESSAMENTO DE LINGUAGEM NATURAL}}
+\autor{Leandro Coelho Correia}
+\local{Salvador}
+\data{2021}
+\instituicao{%
+  Pontifícia Universidade Católica de Minas Gerais
+  \par
+  Núcleo de Educação à Distância
+  \par
+  Pós-graduação Lato Sensu em Inteligência Artificial e Aprendizado de Máquina}
+\tipotrabalho{Relatório técnico}
+\preambulo{Trabalho de Conclusão de Curso apresentado ao Curso de Especialização em Inteligência Artificial e Aprendizado de Máquina como requisito parcial à obtenção do título de especialista.}
+% ---
+
+% informações do PDF
+\makeatletter
+\hypersetup{
+     	%pagebackref=true,
+		pdftitle={\@title}, 
+		pdfauthor={\@author},
+    	pdfsubject={\imprimirpreambulo},
+	    pdfcreator={LaTeX with abnTeX2},
+		pdfkeywords={abnt}{latex}{abntex}{abntex2}{relatório técnico}, 
+		bookmarksdepth=4
+}
+\makeatother
+% --- 
+
+% O tamanho do parágrafo é dado por:
+\setlength{\parindent}{1.3cm}
+
+% Controle do espaçamento entre um parágrafo e outro:
+\setlength{\parskip}{0.2cm}  % tente também \onelineskip
+
+% Compila o índice
+\makeindex
+
+
+% Início do documento
+\begin{document}
+
+
+\selectlanguage{brazil}
+
+% Retira espaço extra obsoleto entre as frases.
+\frenchspacing 
+
+% ----------------------------------------------------------
+% ELEMENTOS PRÉ-TEXTUAIS
+% ----------------------------------------------------------
+\pretextual
+
+\imprimircapa
+\imprimirfolhaderosto*
+
+% inserir lista de ilustrações
+\pdfbookmark[0]{\listfigurename}{lof}
+\listoffigures*
+\cleardoublepage
+% ---
+
+% inserir lista de tabelas
+\pdfbookmark[0]{\listtablename}{lot}
+\listoftables*
+\cleardoublepage
+% ---
+
+% ---
+% inserir o sumario
+% ---
+\pdfbookmark[0]{\contentsname}{toc}
+\tableofcontents*
+\cleardoublepage
+% ---
+
+% ----------------------------------------------------------
+% ELEMENTOS TEXTUAIS
+% ----------------------------------------------------------
+\textual
+
+% ------------------
+% ELEMENTOS TEXTUAIS
+% ------------------
+\textual
+
+\chapter{Introdução}
+\section{Contextualização}
+...
+\section{O problema proposto}
+...
+
+\chapter{Coleta de Dados}
+...
+
+\chapter{Processamento/Tratamento dos Dados}
+...
+
+\chapter{Análise e Exploração dos Dados}
+...
+
+\chapter{Criação de Modelos de Machine Learning}
+...
+
+\chapter{Apresentação dos Resultados}
+...
+
+\chapter{Conclusão}
+...
+
+% ----------------------------------------------------------
+% ELEMENTOS PÓS-TEXTUAIS
+% ----------------------------------------------------------
+\postextual
+
+% Referências bibliográficas
+%\bibliography{referencias.bib}
+
+\end{document}
