@@ -24,5 +24,15 @@ O Processamento de Linguagem Natural (PLN) é uma área da Ciência da Computaç
 
 Este trabalho propõe a criação de um modelo de aprendizado de máquina, baseado em PLN, capaz de classificar automaticamente os segmentos de atos normativos provenientes do DOU, reduzindo o esforço e o tempo de inclusão dos atos no sistema Normas. A classificação automática de segmentos, além de contribuir para a otimização do trabalho da RFB, possibilita que os atos normativos sejam disponibilizados à sociedade em um intervalo de tempo menor.
 
-Não fazem parte do escopo desta pesquisa a classificação do ato como um todo (pois o tipo do ato pode ser deduzido a partir do seu título através de heurísticas simples) nem o estudo dos relacionamentos entre os atos (uma funcionalidade complexa do sistema Normas que demanda uma pesquisa dedicada).   
+Não fazem parte do escopo desta pesquisa a classificação do ato como um todo (pois o tipo do ato pode ser deduzido a partir do seu título através de heurísticas simples) nem o estudo dos relacionamentos entre os atos (uma funcionalidade complexa do sistema Normas que demanda uma pesquisa dedicada).
+
+Para a realização da pesquisa foi utilizada a linguagem de programação \textit{Python}. A maior parte do código foi organizado em arquivos *.py. Além disso, foram criados dois arquivos  *.ipynb (\textit{Jupyter Notebooks}):
+\begin{alineas}
+	\item \textbf{dados.py}: contém a definição da classe \textbf{Dados	} responsável por armazenar todos os dados utilizados ao longo do fluxo de aprendizado de máquina;
+	\item \textbf{carga\textunderscore dados.py}: realização da importação dos dados, a partir do conjunto de dados (extracao\textunderscore segmentos\textunderscore atos.csv, para a classe Dados;
+	\item \textbf{analise-exploratoria.ipynb}: notebook utilizado para a análise exploratória de dados;
+	\item \textbf{fluxo-ml.ipynb}: \textit{notebook} responsável pela orquestração das etapas do fluxo de aprendizado de máquina.   
+\end{alineas} 
+
+
 
