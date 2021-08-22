@@ -8,10 +8,13 @@
 	]{abntex2}
 
 
-% Pacotes fundamentais 
-\usepackage{helvet}			
+% Configuracoes de fonte
+\usepackage{helvet}	
+\renewcommand{\familydefault}{\sfdefault}		
+\usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}		
-\usepackage[utf8]{inputenc}		
+
+% Pacotes fundamentais 
 \usepackage{indentfirst}		
 \usepackage{color}				
 \usepackage{graphicx}			
@@ -50,11 +53,12 @@
 \makeatother
 % --- 
 
-% O tamanho do parágrafo é dado por:
-\setlength{\parindent}{1.3cm}
-
-% Controle do espaçamento entre um parágrafo e outro:
-\setlength{\parskip}{0.2cm}  % tente também \onelineskip
+% Espaçamentos
+\setlength\afterchapskip{12pt} % Após o título dos capítulos
+\setlength\beforesecskip{12pt} % Antes do título das seções
+\setlength\aftersecskip{12pt} 	% Após o título das seções
+\setlength{\parindent}{1.3cm} 	% Identação da primeira linha do parágrafo
+\setlength{\parskip}{0.2cm}  	% Espaçamento entre um parágrafo e outro
 
 % Compila o índice
 \makeindex
