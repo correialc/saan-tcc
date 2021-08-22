@@ -1,5 +1,23 @@
 \chapter{Coleta de Dados}
 
-Para a realização deste trabalho foi utilizado um conjunto de dados contendo XXX segmentos pertencentes a YYY atos públicos do sistema Normas, relativos ao período de 01/01/2018 a 31/12/2020. Os dados estão em formato *.CSV e seguem a estrutura descrita na tabela \ref{tab:estrutura-coleta}.
+Para a realização deste trabalho foi utilizado um conjunto de dados contendo 260.488 segmentos pertencentes a 20.821 atos do sistema Normas\footnote{Nem todos os atos do sistema Normas são de domínio público, mas todos os atos utilizados nesta pesquisa são públicos e podem ser acessados através da Internet, tanto pela Imprensa Nacional quanto pelo sistema Normas.}, relativos ao período de 01/01/2018 a 31/12/2020. Os dados estão em formato *.CSV e seguem a estrutura descrita na tabela \ref{tab:estrutura-conjunto-dados}.
 
-    
+\begin{table}[h!] 
+\caption{Estrutura do Conjunto de Dados}
+\label{tab:estrutura-conjunto-dados}
+	\begin{center} 
+		\begin{tabular}{|l|l|l|} 
+			\hline ATRIBUTO & DESCRIÇÃO & TIPO \\
+			\hline
+			\hline id\textunderscore ato & Identificador do ato & Quantitavivo Discreto \\ 
+			\hline data\textunderscore  pub & Data de publicação do ato & Categórico Nominal \\ 
+			\hline tipo\textunderscore  ato & Tipo do ato & Categórico Nominal \\
+			\hline id\textunderscore seg & Identifiador do segmento & Quantitavivo Discreto \\
+			\hline tipo\textunderscore seg & Tipo do segmento & Categórico Nominal \\
+			\hline txt\textunderscore seg & Texto do segmento & Categórico Nominal \\
+			\hline
+		\end{tabular} 
+	\end{center}
+\end{table}
+
+Os atributos id\textunderscore ato, data\textunderscore  pub, tipo\textunderscore  ato e id\textunderscore seg foram utilizados somente para a análise exploratória e posterior limpeza dos dados. Os atributos relevantes para a criação do modelo de classificação foram txt\textunderscore seg (que representa o texto do segmento a ser classificado) e tipo\textunderscore seg (a classe ou \textit{label} do segmento).  
