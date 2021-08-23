@@ -1,11 +1,12 @@
 
 \documentclass[
+	article,
 	12pt,				
 	oneside,
 	a4paper,
 	english,
-	brazil,
-	]{abntex2}
+	brazil
+]{abntex2}
 
 
 % Configuracoes de fonte
@@ -23,7 +24,6 @@
 \usepackage{microtype} 
 \usepackage{pucmg}	% Customizacoes para os padroes PUC-MG
 % ---
-	
 
 % Pacotes de citações
 \usepackage[brazilian,hyperpageref]{backref}	 
@@ -69,7 +69,6 @@
 % Início do documento
 \begin{document}
 
-
 \selectlanguage{brazil}
 
 % Retira espaço extra obsoleto entre as frases.
@@ -103,33 +102,18 @@
 \cleardoublepage
 % ---
 
-% ----------------------------------------------------------
-% ELEMENTOS TEXTUAIS
-% ----------------------------------------------------------
-\textual
-
 % ------------------
 % ELEMENTOS TEXTUAIS
 % ------------------
 \textual
 
+\begingroup
+\let\clearpage\relax
 \include{introducao/introducao}
 \include{coleta/coleta}
+\endgroup
 
-\chapter{Processamento/Tratamento dos Dados}
-...
-
-\chapter{Análise e Exploração dos Dados}
-...
-
-\chapter{Criação de Modelos de Machine Learning}
-...
-
-\chapter{Apresentação dos Resultados}
-...
-
-\chapter{Conclusão}
-...
+\newpage
 
 % ----------------------------------------------------------
 % ELEMENTOS PÓS-TEXTUAIS
