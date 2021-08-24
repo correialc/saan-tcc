@@ -21,13 +21,45 @@
 \usepackage{indentfirst}		
 \usepackage{color}				
 \usepackage{graphicx}			
-\usepackage{microtype} 
+\usepackage{microtype}
+\usepackage{listings}
 \usepackage{pucmg}	% Customizacoes para os padroes PUC-MG
 % ---
 
 % Pacotes de citações
 \usepackage[brazilian,hyperpageref]{backref}	 
 \usepackage[alf,abnt-emphasize=bf]{abntex2cite}	% Citações padrão ABNT
+
+% Definições de estilo para a listagem de código
+\lstloadlanguages{Python}
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{estiloCodigo}{
+    language=Python,
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily,
+    identifierstyle=\color{blue},
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    keepspaces=true,                 
+    numbers=none,       
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2,
+}
+
+\lstset{style=estiloCodigo}
+% ---
 
 % Informações de dados para CAPA e FOLHA DE ROSTO
 \titulo{\Large{CLASSIFICAÇÃO DE SEGMENTOS EM ATOS NORMATIVOS ATRAVÉS DE PROCESSAMENTO DE LINGUAGEM NATURAL}}
