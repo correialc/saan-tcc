@@ -2,7 +2,7 @@
 
 A Análise Exploratória de Dados (AED) é uma etapa do fluxo de aprendizado de máquina que permite realizar uma exploração dos dados baseada em técnicas da Estatística Descritiva. Para essa etapa da pesquisa foi utilizado o notebook \textbf{analise-exploratoria.ipynb}. Por se tratar de uma atividade interativa, a utilização de um Jupyter Notebook se mostrou mais eficiente do que a utilização direta de um script Python.
 
-\subsection{Valores Ausentes}
+\subsection{Valores Ausentes ou Inválidos}
 
 A primeira investigação realizada foi a busca de valores valores ausentes. Foram encontrados 1.900 segmentos com valores ausentes para o atributo txt\textunderscore seg. Nos demais atributos não havia valores ausentes. A tabela \ref{tab:valores-ausentes} apresenta a quantidade de segmentos com valores ausentes por tipo de segmento.
 
@@ -30,7 +30,7 @@ Os segmentos do tipo Anexo representam 93,57\% dos segmentos com valores ausente
 
 Além dos valores ausentes, em diversos tipos de segmento foram identificados caracteres inválidos que precisaram ser removidos no processo de limpeza de dados, especialmente os caracteres de \textit{escape} e \textit{tags} HTML (exemplos: <br/>, \&ccedil, \&atilde).
 
-\subsection{Distribuições de Atos e Segmentos}
+\subsection{Distribuição de Atos e Segmentos}
 
 Um aspecto que chamou a atenção na exploração dos dados foi a predominância de Atos Declaratórios Executivos (ADE), representando 71,79\% (14.948 dos 20.821 atos analisados), seguido pelas Soluções de Consulta (SC) com 14,98\% e Portarias (PORT) com 10,60\%. Os demais tipos de ato representam juntos 2.63\% do total. A figura \ref{fig:atos-por-tipo-ato} evidencia essa distribuição.
 
@@ -88,4 +88,14 @@ Ao longo da análise exploratória foram identificados, em alguns tipos de segme
 	\item Fechos são iniciados com nomes próprios, seguidos ou não pelo cargo.
 \end{alineas}
 
-    
+ \subsection{Conclusões da Análise Exploratória}
+ 
+ Ao final da análise exploratória de dados foi possível elencar as seguintes conclusões que servirão de base para as etapas seguintes do fluxo de aprendizado de máquina:
+
+\begin{alineas}
+	\item Os segmentos do tipo Anexo podem ser removidos do conjunto de dados;
+	\item Os segmentos com valores ausentes são pouco representativos (0,06\% do total) e podem ser removidos do conjunto de dados;
+	\item Será necessário tratar caracteres inválidos na etapa de limpeza;
+	\item Os tipos de segmento (classes do modelo) variam de um tipo de ato para outro e isso precisa ser considerado nas etapas seguintes;
+	\item Existem padrões nos textos que permitem a avaliação, para alguns tipos de segmento, de heurísticas alternativas à utilização de algoritmos de classificação.
+\end{alineas}
