@@ -30,23 +30,47 @@ Os segmentos do tipo Anexo representam 93,57\% dos segmentos com valores ausente
 
 \subsection{Distribuições de Atos e Segmentos}
 
-Um aspecto que chamou a atenção na exploração dos dados foi a predominância de Atos Declaratórios Executivos (ADE), representando 71,79\% (14.948 dos 20.821 atos analisados), seguido pelas Soluções de Consulta (SC) com 14,98\% e Portarias (Port.) com 10,60\%. Os demais tipos de ato representam juntos 2.63\% do total. A figura \ref{fig:atos-por-tipo-ato} evidencia essa distribuição.
+Um aspecto que chamou a atenção na exploração dos dados foi a predominância de Atos Declaratórios Executivos (ADE), representando 71,79\% (14.948 dos 20.821 atos analisados), seguido pelas Soluções de Consulta (SC) com 14,98\% e Portarias (PORT) com 10,60\%. Os demais tipos de ato representam juntos 2.63\% do total. A figura \ref{fig:atos-por-tipo-ato} evidencia essa distribuição.
 
-\begin{figure}[h]
+\begin{figure}[h!]
 	\caption{Quantidade de atos por tipo de ato}
 	\center
 	\label{fig:atos-por-tipo-ato}
-	\includegraphics[scale=1.7]{exploratoria/atos-por-tipo-ato.png}
+	\includegraphics[scale=1.9]{exploratoria/atos-por-tipo-ato.png}
 	\fdp
 \end{figure}
 
-Outro aspecto importante analisado durante a exploração de dados foi distribuição dos segmentos por tipo de ato.
+Outro aspecto importante analisado durante a exploração de dados foi distribuição dos segmentos por tipo de ato. Na tabela \ref{tab:segmentos-por-tipo-ato} é possível perceber que dos 17 tipos possíveis de segmento, somente 13 estão presentes em atos dos tipos ADE, SC e PORT. Além disso, nem todos os 13 tipos de segmento estão presentes nos 3 tipos de ato e alguns tipos de segmento são pouco frequentes.
 
- \begin{figure}[h]
-	\caption{Distribuição dos segmentos por tipo de ato}
-	\center
-	\label{fig:segmentos-por-tipo-ato}
-	\includegraphics[scale=1.7]{exploratoria/segmentos-por-tipo-ato.png}
+\begin{table}[h!] 
+\caption{Valores ausentes por tipo de segmento}
+\label{tab:valores-ausentes}
+	\begin{center} 
+
+		\begin{tabular}{rrrr}
+		\toprule
+		TIPO DE ATO &      ADE    &   PORT &      SC \\
+		TIPO DE SEGMENTO          &        &         \\
+		\midrule
+		Alínea           &    780 &  2.265 &      87 \\
+		Artigo           & 37.921 & 11.578 &       3 \\
+		Autor            &      3 &      4 &       0 \\
+		Capítulo         &      5 &    381 &       0 \\
+		Ementa           & 14.948 &  2.207 &   3.119 \\
+		Fecho            & 14.853 &  2.289 &     919 \\
+		Inciso           &  4.134 & 17.399 &       0 \\
+		Item             &    398 &    388 &      10 \\
+		Não Identificado & 36.288 & 11.726 &   6.609 \\
+		Parágrafo        &    861 &  5.894 &       0 \\
+		Seção            &      3 &    219 &       0 \\
+		SubSeção         &      0 &     18 &       0 \\
+		Título           &    545 &    540 &       0 \\
+		\bottomrule
+	\end{tabular}
+	\end{center}
 	\fdp
-\end{figure}
+\end{table} 
 
+Os segmentos do tipo ``Não Identificado'' representam um ponto de atenção para a classificação dos segmentos. Por ser o tipo padrão de segmento do sistema Normas, sempre que ocorre falha humana por omissão na classificação manual, o segmento fica classificado como ``Não Identificado''. Apesar disso, essa é uma classe válida de segmento amplamente utilizada para representar trechos do ato que não precisam de formatação específica. Por estar entre os tipos mais frequentes de segmento e ser um tipo válido, os segmentos desse tipo não podem ser removidos do escopo da classificação, mas a presença de segmentos com classificação omissa pode prejudicar os resultados dos modelos.
+
+   
