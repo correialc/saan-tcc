@@ -1,0 +1,5 @@
+\section{Limpeza de Dados}
+
+A etapa de limpeza de dados é responsável por excluir dados com valores inválidos ou pouco representativos. Os principais pontos identificados na análise exploratória de dados foram a exclusão de atos que não pertençam aos tipo ADE, SC e PORT, a remoção de segmentos do tipo Anexo, a eliminação de valores ausentes e a exclusão de caracteres de \textit{escape} e \textit{tags} HTML.
+
+A classe LimpezaDados (limpeza\textunderscore dados.py) é responsável por buscar os dados provenientes da etapa de coleta em uma instância da classe Dados, realizar as tarefas de limpeza e gravar os dados de volta na classe Dados. Os atributos \textbf{orig} e \textbf{limp} da classe Dados armazenam  respectivamente os dados da coleta e os dados após a limpeza.
