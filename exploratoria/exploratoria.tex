@@ -93,9 +93,10 @@ Ao longo da análise exploratória foram identificados, em alguns tipos de segme
  Ao final da análise exploratória de dados foi possível elencar as seguintes conclusões que servirão de base para as etapas seguintes do fluxo de aprendizado de máquina:
 
 \begin{alineas}
-	\item Os segmentos do tipo Anexo podem ser removidos do conjunto de dados;
-	\item Os segmentos com valores ausentes são pouco representativos (0,06\% do total) e podem ser removidos do conjunto de dados;
+	\item Os segmentos do tipo Anexo podem ser removidos do conjunto de dados por não representarem conteúdo textual;
+	\item Os segmentos com valores ausentes são pouco representativos (0,06\% do total de segmentos) e podem ser removidos do conjunto de dados;
 	\item Será necessário tratar caracteres inválidos na etapa de limpeza;
-	\item Os tipos de segmento (classes do modelo) variam de um tipo de ato para outro e isso precisa ser considerado nas etapas seguintes;
-	\item Existem padrões nos textos que permitem a avaliação, para alguns tipos de segmento, de heurísticas alternativas à utilização de algoritmos de classificação.
+	\item Os tipos de ato ADE, SC e PORT representam 97,37\% do total de atos. O demais tipos de ato juntos são bem menos frequentes e os atos desses tipos podem ser removidos do conjunto de dados;	 
+	\item Os tipos de segmento (variável alvo da classificação) variam de um tipo de ato para outro e isso precisa ser considerado nas etapas seguintes;
+	\item Existem padrões nos textos de alguns tipos de segmento que permitem a avaliação de heurísticas alternativas à utilização de algoritmos de classificação.
 \end{alineas}
