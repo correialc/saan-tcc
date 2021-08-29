@@ -23,7 +23,7 @@ Para a realização deste trabalho foi utilizado um conjunto de dados contendo 2
 
 Os atributos id\textunderscore ato, data\textunderscore  pub, tipo\textunderscore  ato e id\textunderscore seg foram utilizados somente para a análise exploratória e posterior limpeza dos dados. Os atributos relevantes para a criação do modelo de classificação foram txt\textunderscore seg (que representa o texto do segmento a ser classificado) e tipo\textunderscore seg (a classe ou \textit{label} do segmento).
 
-A classe CargaDados (carga\textunderscore dados.py) é responsável por realizar a o processo de carga a partir do conjunto de dados de origem (extracacao-segmentos-atos.csv). A importação de dados foi realizada através do comando \textit{read\textunderscore csv} do Pandas. Os dados importados foram armazenados em uma instância da classe \textbf{Dados} definida no módulo \textbf{dados.py}. Essa classe foi utilizada ao longo de várias etapas do fluxo de aprendizado de máquina para armazenar dados temporários, atuando como um repositório de dados compartilhado.
+A classe CargaDados (carga\textunderscore dados.py) é responsável por realizar a o processo de carga a partir do conjunto de dados de origem (extracacao-segmentos-atos.csv). A importação de dados foi realizada através do comando \textit{read\textunderscore csv} do Pandas. Os dados importados foram armazenados em uma instância da classe \textbf{Dados} (dados.py). Essa instância, denominada daqui por diante \textbf{objeto de dados}, foi utilizada ao longo de várias etapas do fluxo de aprendizado de máquina para armazenar dados temporários, atuando como um repositório de dados compartilhado.
 
 O código a seguir apresenta um exemplo de execução da etapa de carga a partir notebook fluxo-ml.ipynb: 
 
@@ -35,6 +35,6 @@ O código a seguir apresenta um exemplo de execução da etapa de carga a partir
 	12:34:32 - 206488 registros carregados.
 \end{lstlisting}
 
-Como a etapa de carga é a primeira a ser executada, é preciso inicialmente instanciar um objeto da classe Dados (esse objeto será utilizado ao longo de outras etapas além da carga). A seguir é criada uma instância da classe CargaDados, chamando o método ``executar'' passando o objeto de dados como parâmetro.
+Como a etapa de carga é a primeira a ser executada, é preciso inicialmente instanciar o objeto de dados. A seguir é criada uma instância da classe CargaDados, chamando o método ``executar'' e passando o objeto de dados como parâmetro. A carga de dados é então realizada e a quantidade de segmentos carregados é exibida. 
 
 
