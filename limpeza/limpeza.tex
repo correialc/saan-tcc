@@ -25,7 +25,13 @@ Na etapa de limpeza não é mais necessário instanciar o objeto de dados pois a
 
 O tipo de ato precisa ser fornecido como parâmetro adicional. Isso ocorre porque, durante a análise exploratória de dados (seção \ref{sec:dist-atos-segmentos}), ficou evidente que alguns tipos de segmento não ocorreram para alguns tipos de ato ou ocorreram com uma frequência muito baixa. Como o tipo de segmento é a variável alvo para o modelo de classificação, remover os tipos de segmentos menos frequentes ou ausentes para um tipo de ato reduz a quantidade de classes do modelo, tornando-o mais específico para as classes mais frequentes. O tipo de ato é previamente conhecido (ou pode ser facilmente deduzido), logo, fornecer o tipo do ato como parâmetro não representa um desafio. 
 
-Esses fatores acabaram direcionando a estratégia de classificação para a criação de modelos específicos de acordo com o tipo de ato. Dessa forma, os Atos Dclaratórios Executivos (ADE) tiveram um modelo de classificação específico, assim como as Soluções de Consulta (SC) e também as Portarias (PORT). Cado um desses modelos teve como domínio da variável alvo o conjunto de tipos de segmento pertencentes aquele tipo de ato. Nesse cenário, para os atos do tipo ADE, por exemplo, foram considerarados como variável alvo os tipos de segmento Artigo, Ementa, Fecho, Inciso e Não Identificado enquanto para os atos do tipo SC foram contemplados os segmentos do tipo Ementa, Fecho e Não Identificado. 
+Esses fatores acabaram direcionando a estratégia de classificação para a criação de modelos específicos de acordo com o tipo de ato. Dessa forma, os Atos Dclaratórios Executivos (ADE) tiveram um modelo de classificação específico, assim como as Soluções de Consulta (SC) e também as Portarias (PORT). Cado um desses modelos teve como domínio da variável alvo o conjunto de tipos de segmento pertencentes aquele tipo de ato. Nesse cenário, para os atos do tipo ADE, por exemplo, foram considerarados como variável alvo os tipos de segmento Artigo, Ementa, Fecho, Inciso e Não Identificado enquanto para os atos do tipo SC foram contemplados os segmentos do tipo Ementa, Fecho e Não Identificado. O limite de corte utilizado foi um valor menor do que 0,01 (1\%), calculado usando a fórmula a seguir:
+
+\[ corte = \frac{qtd\_segmentos}{total\_segmentos} \]
+
+\begin{quote}
+Sendo \( corte \) o limite de corte dos segmentos, \( qtd\_segmentos \) a quantidade de segmentos encontrados (\textbf{de um determinado tipo de segmento}) para o tipo de ato informado e \( total\_segmentos \) a quantidade de segmentos encontrados (\textbf{de todos os tipos de segmento}) para o tipo de ato informado.
+\end{quote}
 
 Isso acabou trazendo uma tarefa adicional para a etapa de limpeza: remover os atos e segmentos não relacionados ao tipo de ato informado. Assim, a partir do parâmetro tipo\textunderscore ato, a classe de limpeza realiza duas tarefas: 
 \begin{alineas}
