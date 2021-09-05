@@ -1,6 +1,6 @@
 \section{Preprocessamento}
 
-O preprocessamento é a etapa responsável por adequar a representação dos dados a um formato adequado aos algoritmos de aprendizado de máquina. Esta etapa contempla tarefas como remoção de pontuação, exclusão de \textit{stopwords}, tokenização e \textit{steeming}.
+O preprocessamento é a etapa responsável por adequar a representação dos dados a um formato adequado aos algoritmos de aprendizado de máquina. Esta etapa contempla uma série de tarefas como remoção de pontuação, exclusão de \textit{stopwords}, tokenização,  \textit{steeming} e vetorização.
 
 A classe Preprocessamento (preprocessamento.py) realiza as tarefas necessárias ao preprocessamento dos dados. Seguindo a mesma lógica das etapas anteriores, o objeto de dados (instância da classe Dados) traz os dados provenientes da etapa de Limpeza (atributo \textbf{limp}) e armazena os resultados do preprocessamento no atributo \textbf{prep}.  
 
@@ -10,10 +10,16 @@ Caracteres de pontuação geralmente não contribuem com o resultado de algoritm
 
 \subsection{Exclusão de \textit{Stopwords}}
 
-\textit{Stopwords} são termos comuns em uma linguagem, como artigos e preposições, que não trazem contribuição para o resultado de algoritmos de classificação, de forma similar ao que ocorre com os caracteres de pontuação. Tanto no caso da pontuação, quanto no caso das \textit{stopwords}, a remoção dos termos permite uma redução do vocabulário, simplificando a representação do texto e permitindo uma atuação mais específica dos algoritmos de classificação.
-
-Para exclusão das \textit{stopwords} foi utilizada a coleção \textit{nltk.corpus.stopwords.words} em português do NLTK (\textit{Natural Language Toolkit})\footnote{https://www.nltk.org/}, uma biblioteca com diversas funções para o processamento de linguagem natural.
+\textit{Stopwords} são termos comuns em uma linguagem, como artigos e preposições, que não trazem contribuição para o resultado de algoritmos de classificação, de forma similar ao que ocorre com os caracteres de pontuação. Tanto no caso da pontuação, quanto no caso das \textit{stopwords}, a remoção dos termos permite uma redução do vocabulário, simplificando a representação do texto e permitindo uma atuação mais específica dos algoritmos de classificação. Para exclusão das \textit{stopwords} foi utilizada a coleção \textit{nltk.corpus.stopwords.words} em português do NLTK (\textit{Natural Language Toolkit})\footnote{https://www.nltk.org/}, uma biblioteca com diversas funções para o processamento de linguagem natural.
 
 \subsection{Tokenização}
 
-Tokenização é a tarefa de subdividir o texto em seus elementos fundamentais ou \textit{tokens}. A tokenização permite a identificação do conjunto de termos únicos que compõem o texto (o vocabulário), permitindo a aplicação de funções específicas termo-a-termo (como as funções de \textit{steeming}).    
+Tokenização é a tarefa de subdividir o texto em seus elementos fundamentais ou \textit{tokens}. A tokenização permite a identificação do conjunto de termos únicos que compõem o texto (o vocabulário), permitindo a aplicação de funções específicas termo-a-termo (como as funções de \textit{steeming}). Para realização da tokenização foi utilizada a biblioteca \textit{RegexpTokenizer} do NLTK que executa uma tokenização baseada em expressões regulares. Foram testados outras bibliotecas de tokenização do NLTK como o \textit{WhitespaceTokenizer} e o \textit{WordPunctTokenizer}, mas ambos apresentaram resultados inferiores de tokenização.
+
+\subsection{Steeming}
+
+\textit{Steeming} é a redução de um palavra ao seu radical, ou seja, a exclusão de sufixos presentes em variações de uma mesma palavra. As palavras menino, menina, meninos,  meninas, menininho, menininha e meninice, após um processo de \textit{steeming}, seriam reduzidas ao radical \textbf{menin}. Esta eliminação das variações permite tratar diferentes palavras como um único \textit{token}, reduzindo o vocabulário e consequentemente o espaço de estados das caraterísticas de entrada dos modelos de classificação. Para realização do processo de \textit{steeming} foi utilizado o \textit{SnowballStemmer} do NLTK.
+
+\subsection{Vetorização}
+
+A vetorização ou extração de características converte o texto para uma representação matemática que possa ser utilizada como entrada para os algoritmos de aprendizado de máquina. 
