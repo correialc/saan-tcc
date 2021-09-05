@@ -1,0 +1,19 @@
+\section{Preprocessamento}
+
+O preprocessamento é a etapa responsável por adequar a representação dos dados a um formato adequado aos algoritmos de aprendizado de máquina. Esta etapa contempla tarefas como remoção de pontuação, exclusão de \textit{stopwords}, tokenização e \textit{steeming}.
+
+A classe Preprocessamento (preprocessamento.py) realiza as tarefas necessárias ao preprocessamento dos dados. Seguindo a mesma lógica das etapas anteriores, o objeto de dados (instância da classe Dados) traz os dados provenientes da etapa de Limpeza (atributo \textbf{limp}) e armazena os resultados do preprocessamento no atributo \textbf{prep}.  
+
+\subsection{Remoção de Pontuação}
+
+Caracteres de pontuação geralmente não contribuem com o resultado de algoritmos de classificação por serem muito repetitivos e guardarem pouca ou nenhuma informação específica de uma classe. Para a remoção dos caracteres de pontuação foi utilizada a coleção de carecteres \textit{punctuation}, parte da biblioteca padrão do Python e acessível através do módulo \textit{string}. Para remover os caracteres de pontuação foi necessário somente ler os textos dos segmentos e eliminar os caracteres do texto que pertenceciam à coleção \textit{punctuation}.
+
+\subsection{Exclusão de \textit{Stopwords}}
+
+\textit{Stopwords} são termos comuns em uma linguagem, como artigos e preposições, que não trazem contribuição para o resultado de algoritmos de classificação, de forma similar ao que ocorre com os caracteres de pontuação. Tanto no caso da pontuação, quanto no caso das \textit{stopwords}, a remoção dos termos permite uma redução do vocabulário, simplificando a representação do texto e permitindo uma atuação mais específica dos algoritmos de classificação.
+
+Para exclusão das \textit{stopwords} foi utilizada a coleção \textit{nltk.corpus.stopwords.words} em português do NLTK (\textit{Natural Language Toolkit})\footnote{https://www.nltk.org/}, uma biblioteca com diversas funções para o processamento de linguagem natural.
+
+\subsection{Tokenização}
+
+Tokenização é a tarefa de subdividir o texto em seus elementos fundamentais ou \textit{tokens}. A tokenização permite a identificação do conjunto de termos únicos que compõem o texto (o vocabulário), permitindo a aplicação de funções específicas termo-a-termo (como as funções de \textit{steeming}).    
