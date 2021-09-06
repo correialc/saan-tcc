@@ -1,0 +1,16 @@
+\section{Treinamento e Testes}
+
+Para a etapa de treinamento e testes foram criadas duas classes: Treinamento (treinamento.py) e Classificador (classificador.py). Em Classificador foram criados alguns  métodos relacionados ao processo de execução da validação cruzada (quando solicitado), treinamento, cálculo de métricas e apresentação da matriz de confusão para um algoritmo específico de classificação. A classe Treinamento é responsável por armazenar uma coleção de instâncias da classificadores, executando o treinamento e o cálculo de métricas para todos eles.
+
+Como se trata de um problema de classificação multi-classe, foram treinados os algoritmos \textit{LinearSVC} (uma implementação de \textit{Support Vector Machine}) e \textit{MultinomialNB} (uma implementação de classificador bayesiano) em combinação com os algoritmos \textit{OneVsOneClassifier} e \textit{OneVsRestClassifier} que permitem realizar diferentes combinações de classes em problemas de classificação multi-classe. Adicionalmente, todas as combinações de modelos foram realizadas com e sem validação cruzada, a título de comparação (por ser mais rigoroso, o resultado com validação cruzada foi utilizado como referência). Todos os algoritmos utilizados fazem parte da biblioteca \textit{SciKit-Learn}. O código a seguir apresenta uma das combinações de algoritmos de classificação com validação cruzada realizadas:
+
+\begin{lstlisting}
+# Multinomial Naive Bayes 
+t = Treinamento()
+estimadorNB_1x1_CV = OneVsOneClassifier(MultinomialNB())
+t.adicionar_modelo(
+	Classificador('MultinomialNB-1x1-CV', estimadorNB_1x1_CV))
+t.treinar_modelos(dados, cv=5)
+\end{lstlisting}
+
+Foram adotadas quatro métricas para avaliação dos resultados: acurácia (de todas as classificações, quantas o modelo classificou corretamente), precisão (de todas as classificações positivas do modelo, quantas classificações positivas estavam corretas), revocação (de todas as classificações positivas esperadas, quantas classificações positivas estavam corretas) e f1 (média harmônica entre a precisão e a revocação), todas disponíveis através do módulo \textit{metrics} do \textit{SciKit-Learn}. Assim como outros dados ao longo das etapas do fluxo de aprendizado de máquina, as métricas também foram armazenadas no objeto de dados para análise posterior. 
