@@ -1,0 +1,18 @@
+\section{Análise de Resultados}
+
+Foram realizadas 24 combinações de treinamento e teste:
+
+\begin{alineas}
+\item dois algoritmos de classificação (\textit{LinearSVC} e \textit{MultinomialNB});
+\item dois algoritmos de classificação com combinação de classes (\textit{OneVsOne} e \textit{OnevsRest});
+\item treinamento com e sem validação cruzada;
+\item treinamento de três tipos de ato distintos (ADE, SC e PORT).
+\end{alineas}
+
+A tabela \ref{tab:resultados-ade} apresenta os resultados para os atos do ADE.
+
+A tabela \ref{tab:resultados-sc} apresenta os resultados para os atos do SC.
+
+A tabela \ref{tab:resultados-port} apresenta os resultados para os atos do PORT.
+
+Com base nos resultados encontrados, é possível concluir que modelo treinado com a combinação \textit{LinearSVC} com \textit{OneVsOne} apresentou o melhor desempenho em todas métricas para todos os tipos tipos de ato.
