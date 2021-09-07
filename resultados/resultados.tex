@@ -1,10 +1,6 @@
 \section{Análise de Resultados}
 
-Foram realizadas 24 combinações de treinamento e teste: dois algoritmos de classificação (\textit{LinearSVC} e \textit{MultinomialNB}); dois algoritmos de classificação com combinação de classes (\textit{OneVsOne} e \textit{OnevsRest}); treinamento com e sem validação cruzada; treinamento de três tipos de ato distintos (ADE, SC e PORT). As tabelas \ref{tab:resultados-ade}, \ref{tab:resultados-sc} e \ref{tab:resultados-port} apresentam os resultados para os atos dos tipos ADE, SC e PORT respectivamente.
-
-Com base nos resultados encontrados, é possível concluir que os modelos treinados com o algoritmo \textit{LinearSVC} apresentaram melhor desempenho em todas métricas para todos os tipos tipos de ato se comparados aos modelos treinados com o algoritmo \textit{MultinomialNB}. A diferença entre a utilização dos algoritmos de combinação de classes \textit{OneVsOne} e \textit{OnevsRest} foi pequena. Como critério de comparação entre as métricas o XXX foi priorizado ...
-
-Outra constatação importante foi um resultado muito inferior para os atos do tipo PORT. Uma possível explicação para esse é o fato das portarias possuírem segmentos do tipo parágrafo que ...
+Foram realizadas 12 combinações de treinamento e teste: dois algoritmos de classificação (\textit{LinearSVC} e \textit{MultinomialNB}), treinamento com e sem validação cruzada e treinamento de três tipos de ato distintos (ADE, SC e PORT). As tabelas \ref{tab:resultados-ade}, \ref{tab:resultados-sc} e \ref{tab:resultados-port} apresentam os resultados para cada tipo de ato.
 
 \begin{table}[h]
 \caption{Resultados para os atos do tipo ADE}
@@ -12,15 +8,11 @@ Outra constatação importante foi um resultado muito inferior para os atos do t
 	\begin{center}
 	\begin{tabular}{lrrrr}
 		\toprule
-		{} &  Acurácia &  Precisão &  Revocacão &      F1 \\
+		{} &  Acurácia &  Precisão &  Revocacão &      F1-Score \\
 		\midrule
-		LinearSVC-1x1        &    0.9839 &    0.9776 &     0.9806 &  0.9790 \\
 		LinearSVC-1xR        &    0.9813 &    0.9764 &     0.9754 &  0.9759 \\
-		MultinomialNB-1x1    &    0.9282 &    0.9245 &     0.9246 &  0.9234 \\
 		MultinomialNB-1xR    &    0.9297 &    0.9282 &     0.9258 &  0.9259 \\
-		LinearSVC-1x1-CV     &    0.9739 &    0.9665 &     0.9648 &  0.9653 \\
 		LinearSVC-1xR-CV     &    0.9720 &    0.9630 &     0.9649 &  0.9636 \\
-		MultinomialNB-1x1-CV &    0.9158 &    0.9052 &     0.9122 &  0.9071 \\
 		MultinomialNB-1xR-CV &    0.9157 &    0.9083 &     0.9129 &  0.9090 \\
 		\bottomrule
 	\end{tabular}
@@ -33,15 +25,11 @@ Outra constatação importante foi um resultado muito inferior para os atos do t
 	\begin{center}
 	\begin{tabular}{lrrrr}
 		\toprule
-		{} &  Acuracia &  Precisão &  Revocação &      F1 \\
+		{} &  Acuracia &  Precisão &  Revocação &      F1-Score \\
 		\midrule
-		LinearSVC-1x1        &    0.9920 &    0.9946 &     0.9882 &  0.9914 \\
 		LinearSVC-1xR        &    0.9906 &    0.9933 &     0.9872 &  0.9902 \\
-		MultinomialNB-1x1    &    0.8296 &    0.9086 &     0.8079 &  0.8272 \\
 		MultinomialNB-1xR    &    0.8291 &    0.9043 &     0.8088 &  0.8278 \\
-		LinearSVC-1x1-CV     &    0.9777 &    0.9857 &     0.9641 &  0.9740 \\
 		LinearSVC-1xR-CV     &    0.9780 &    0.9860 &     0.9619 &  0.9730 \\
-		MultinomialNB-1x1-CV &    0.8161 &    0.8630 &     0.7955 &  0.8018 \\
 		MultinomialNB-1xR-CV &    0.8129 &    0.8507 &     0.7950 &  0.7968 \\
 		\bottomrule
 	\end{tabular}
@@ -54,19 +42,17 @@ Outra constatação importante foi um resultado muito inferior para os atos do t
 	\begin{center}
 	\begin{tabular}{lrrrr}
 		\toprule
-		{} &  acuracia &  precisao &  revocacao &      f1 \\
+		{} &  Acurácia &  Precisão &  Revocação &      F1-Score \\
 		\midrule
-		LinearSVC-1x1        &    0.8961 &    0.9131 &     0.8706 &  0.8894 \\
 		LinearSVC-1xR        &    0.8953 &    0.9075 &     0.8783 &  0.8914 \\
-		MultinomialNB-1x1    &    0.7399 &    0.8414 &     0.6516 &  0.6870 \\
 		MultinomialNB-1xR    &    0.7511 &    0.8370 &     0.6881 &  0.7212 \\
-		LinearSVC-1x1-CV     &    0.8413 &    0.8692 &     0.8111 &  0.8321 \\
 		LinearSVC-1xR-CV     &    0.8387 &    0.8538 &     0.8141 &  0.8285 \\
-		MultinomialNB-1x1-CV &    0.6890 &    0.7810 &     0.6097 &  0.6338 \\
 		MultinomialNB-1xR-CV &    0.6999 &    0.7850 &     0.6410 &  0.6619 \\
 		\bottomrule
 	\end{tabular}
 	\end{center}		
 \end{table}
 
-isuahdashiudh isahdihasiudhasiu hdiuashi dhasihd iashdi hasidh ashdi ashdihas iudhsaihi hasdih ashdia shdih ihdish hidshid hisahdi hhisdhhi sdisah idsiah iashdi hsaihd iashdi hasidh iashdias idahsh idsiah hdiasdi hhsaih dhiusahid uhsaiuhd iushidu isuhdhi ushiduhsa uihdiusa hhdiush iusdahiu hsdajdsa.
+Com base nos resultados encontrados, é possível concluir que os modelos treinados com o algoritmo \textit{LinearSVC} apresentaram melhor desempenho em todas métricas para todos os tipos tipos de ato se comparados aos modelos treinados com o algoritmo \textit{MultinomialNB}. A diferença nos resultados dos treinamentos com e sem validação cruzada era esperada, visto que a validação cruzada estabelece um cenário de teste mais rigoroso, de forma evitar sobreajuste (\textit{overfitting}). Sendo assim, o melhor resultado, considerando as métricas utilizadas e o potencial de generalização do modelo, pode ser identificado como \textbf{LinearSVC-1xR-CV} nas referidas tabelas. 
+
+Outra constatação importante foi um resultado muito inferior para os atos do tipo PORT.
