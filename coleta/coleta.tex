@@ -22,11 +22,11 @@ Para a realização deste trabalho foi utilizado um conjunto de dados contendo 2
 	\fdp
 \end{table}
 
-Os atributos id\textunderscore ato, data\textunderscore  pub, tipo\textunderscore  ato e id\textunderscore seg foram utilizados somente para a análise exploratória e posterior limpeza dos dados. Os atributos relevantes para a criação do modelo de classificação foram txt\textunderscore seg (que representa o texto do segmento a ser classificado) e tipo\textunderscore seg (a classe ou \textit{label} do segmento).
+Os atributos id\textunderscore ato, data\textunderscore  pub, tipo\textunderscore  ato e id\textunderscore seg foram utilizados somente para a análise exploratória e posterior limpeza dos dados. Os atributos relevantes para a criação do modelo de classificação foram txt\textunderscore seg (que representa o texto do segmento a ser classificado) e tipo\textunderscore seg (a classe do segmento).
 
-A classe CargaDados (carga\textunderscore dados.py) é responsável por realizar a o processo de carga a partir do conjunto de dados de origem (extracacao-segmentos-atos.csv). A importação de dados foi realizada através do comando \textit{read\textunderscore csv} do Pandas. Os dados importados foram armazenados em uma instância da classe \textbf{Dados} (dados.py). Essa instância, denominada daqui por diante \textbf{objeto de dados}, foi utilizada ao longo de várias etapas do fluxo de aprendizado de máquina para armazenar dados temporários, atuando como um repositório de dados compartilhado.
+A classe \textbf{CargaDados} (carga\textunderscore dados.py) é responsável por realizar o processo de carga a partir do conjunto de dados de origem (extracacao-segmentos-atos.csv). A importação de dados foi realizada através do comando \textit{read\textunderscore csv} do Pandas. Os dados importados foram armazenados em uma instância da classe \textbf{Dados} (dados.py). Essa instância, doravante denominada \textbf{objeto de dados}, foi utilizada ao longo de várias etapas do fluxo de aprendizado de máquina para armazenar dados temporários, atuando como um repositório de dados compartilhado.
 
-O código a seguir apresenta um exemplo de execução da etapa de carga a partir do notebook fluxo-ml.ipynb: 
+O código a seguir apresenta um exemplo de execução da etapa de carga a partir do notebook \textbf{fluxo-ml.ipynb}: 
 
 \begin{lstlisting}
 	dados = Dados()
