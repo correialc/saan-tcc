@@ -55,9 +55,9 @@ Foram realizadas 12 combinações de treinamento e teste: dois algoritmos de cla
 
 Com base nos resultados encontrados, é possível concluir que os modelos treinados com o algoritmo \textit{LinearSVC} apresentaram melhor desempenho em todas métricas para todos os tipos de ato se comparados aos modelos treinados com o algoritmo \textit{MultinomialNB}. A diferença nos resultados dos treinamentos com e sem validação cruzada era esperada, visto que a validação cruzada estabelece um cenário de teste mais rigoroso, de forma evitar sobreajuste (\textit{overfitting}). Sendo assim, o melhor resultado, considerando as métricas utilizadas e o potencial de generalização do modelo, pode ser identificado como \textbf{LinearSVC-1xR-CV} nas referidas tabelas. 
 
-Refinando a análise, se considerarmos somente o melhor resultado (\textit{LinearSVC} com validação cruzada), é possível constatar um resultado significativamente inferior para os atos do tipo PORT (com todas as métricas abaixo de 86\%) em comparação com os atos ADE e SC (que obtiveram valores acima de 96\% em todas as métricas). Para compreender melhor essa diferença, foram analisadas as matrizes de confusão referentes aos atos do tipo ADE e PORT.
+\subsection{Refinamento da Análise de Resultados}
 
-A figura \ref{fig:matriz-confusao-ade} evidencia que a zona de maior confusão para os atos ADE está relacionada aos segmentos do tipo ``Não Identificado''. É possível perceber que os segmentos não identificados se confundiram com todos os outros tipos, gerando tanto falsos positivos quanto falsos negativos. Um resultado pior para a classificação de segmentos não identificados já era esperado, em virtude da natureza desse tipo de segmento, conforme discutido na seção \ref{sec:dist-atos-segmentos} da análise exploratória. Esse foi um problema que afetou não somente os atos do tipo ADE, mas também os atos SC e PORT. A situação dos segmentos não identificados indica a necessidade de abordagens adicionais que extrapolam o escopo da presente pesquisa, como a utilização de estratégias não supervisionadas para melhor entendimento da natureza dos dados desse tipo de segmento. Outra possibilidade é indicação de uma revisão manual dos segmentos não identificados para correção de possíveis omissões na classificação original realizada manualmente.
+Se for considerado somente o melhor resultado (\textit{LinearSVC} com validação cruzada), é possível constatar um resultado significativamente inferior para os atos do tipo PORT (com todas as métricas abaixo de 86\%) em comparação com os atos ADE e SC (que obtiveram valores acima de 96\% em todas as métricas). Para compreender melhor essa diferença, foram analisadas as matrizes de confusão referentes aos atos do tipo ADE e PORT.
 
 \begin{figure}[h]
 	\caption{Matriz de confusão para atos do tipo ADE}
@@ -66,6 +66,8 @@ A figura \ref{fig:matriz-confusao-ade} evidencia que a zona de maior confusão p
 	\includegraphics[scale=0.45]{resultados/matriz-confusao-ade.png}
 	\fdp
 \end{figure}
+
+A figura \ref{fig:matriz-confusao-ade} evidencia que a zona de maior confusão para os atos ADE está relacionada aos segmentos do tipo ``Não Identificado''. É possível perceber que os segmentos não identificados se confundiram com todos os outros tipos, gerando tanto falsos positivos quanto falsos negativos. Um resultado pior para a classificação de segmentos não identificados já era esperado, em virtude da natureza desse tipo de segmento, conforme discutido na seção \ref{sec:dist-atos-segmentos} da análise exploratória. Esse foi um problema que afetou não somente os atos do tipo ADE, mas também os atos SC e PORT. A situação dos segmentos não identificados indica a necessidade de abordagens adicionais que extrapolam o escopo da presente pesquisa, como a utilização de estratégias não supervisionadas para melhor entendimento da natureza dos dados desse tipo de segmento. Outra possibilidade é indicação de uma revisão manual dos segmentos não identificados para correção de possíveis omissões na classificação original realizada manualmente.
 
 Especificamente no que tange os resultados obtidos com os atos do tipo PORT, a matriz de confusão (figura \ref{fig:matriz-confusao-port}) indica que, além do problema com os segmentos não identificados, houve confusão entre os segmentos dos tipos ``Alínea'', ``Inciso'' e ``Parágrafo''. Os atos PORT possuem uma representatividade maior dos tipos de segmento em questão em comparação com os atos ADE e SC. Além disso, esse é o tipo de ato com maior número de classes com 7 tipos de segmento, enquanto os atos ADE possuem 5 e os atos SC possuem 3.
 
@@ -77,6 +79,31 @@ Especificamente no que tange os resultados obtidos com os atos do tipo PORT, a m
 	\fdp
 \end{figure}
 
-Uma hipótese de melhoria para o cenário em questão é a utilização de técnicas de \textit{oversampling} como o SMOTE\cite{Smote2002} para minimizar as distorções causadas pelo desbalanceamento das classes.
+\subsection{Otimização dos Resultados}
 
-Vale ressaltar que, mesmo diante dos problemas de classificação apresentados, os resultados podem ser considerados plenamente satisfatórios para os três tipos de ato, se confrontarmos os resultados obtidos com a alternativa atual do sistema Normas (classificação 100\% manual).   
+Visando melhorar o desempenho dos modelos, foram adotadas duas estratégias: otimização de hiperparâmetros e a utilização de uma técnica de \textit{oversampling} para minimizar as distorções causadas pelo desbalanceamento das classes.
+
+Para otimização de hiperparâmetros, foi utilizado o \textit{GridSearchCV}, um módulo da biblioteca \textit{SciKit-Learn} que permite avaliar diferentes combinações de hiperparâmetros de um  algoritmo de aprendizado de máquina. A combinação de parâmetros do algoritmo \textit{LinearSVC} sugerida pelo \textit{GridSearch} foi justamente aquela que já vinha sendo utilizada, logo, não houve progresso nos resultados a partir dessa abordagem.
+
+No que diz respeito ao tratamento do desbalanceamento das classes, foi utilizada a técnica SMOTE\cite{Smote2002} que sintetiza novos exemplos de dados para as classes minoritárias a partir de dados existentes no conjunto de dados original. A tabela 
+
+\begin{table}[h]
+\caption{Tratamento de classes desbalanceadas}
+\label{tab:resultados-oversampling}
+	\begin{center}
+	\begin{tabular}{lrrrr}
+		\toprule
+		{} &  Acurácia &  Precisão &  Revocação &      F1-Score \\
+		\midrule
+		ADE sem SMOTE        &    0.9720 &    0.9630 &     0.9649 &  0.9636 \\
+		ADE com SMOTE    &    0.9849 &    0.9850 &     0.9849 &  0.9848 \\
+		SC sem SMOTE     &    0.9780 &    0.9860 &     0.9619 &  0.9730 \\
+		SC com SMOTE &    0.9798 &    0.9803 &     0.9798 &  0.9797 \\
+		PORT sem SMOTE     &    0.8387 &    0.8538 &     0.8141 &  0.8285 \\
+		PORT com SMOTE &    0.9197 &    0.9252 &     0.9197 &  0.9189 \\
+		\bottomrule
+	\end{tabular}
+	\end{center}		
+\end{table}
+
+O desempenho após o tratamento das classes desbalanceadas foi superior para todos os tipos de ato, com destaque para o aumento de 7\% a 10\% nas métricas dos atos do tipo PORT.   
