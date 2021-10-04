@@ -3,7 +3,7 @@
 Foram realizadas 12 combinações de treinamento e teste: dois algoritmos de classificação (\textit{LinearSVC} e \textit{MultinomialNB}), treinamento com e sem validação cruzada e treinamento de três tipos de ato distintos (ADE, SC e PORT). As tabelas \ref{tab:resultados-ade}, \ref{tab:resultados-sc} e \ref{tab:resultados-port} apresentam os resultados para cada tipo de ato.
 
 \begin{table}[h]
-\caption{Resultados para os atos do tipo ADE}
+\caption{Resultados da classificação para os atos do tipo ADE}
 \label{tab:resultados-ade}
 	\begin{center}
 	\begin{tabular}{lrrrr}
@@ -20,7 +20,7 @@ Foram realizadas 12 combinações de treinamento e teste: dois algoritmos de cla
 \end{table}
 
 \begin{table}[h]
-\caption{Resultados para os atos do tipo SC}
+\caption{Resultados da classificação para os atos do tipo SC}
 \label{tab:resultados-sc}
 	\begin{center}
 	\begin{tabular}{lrrrr}
@@ -37,7 +37,7 @@ Foram realizadas 12 combinações de treinamento e teste: dois algoritmos de cla
 \end{table}
 
 \begin{table}[h]
-\caption{Resultados para os atos do tipo PORT}
+\caption{Resultados da classificação para os atos do tipo PORT}
 \label{tab:resultados-port}
 	\begin{center}
 	\begin{tabular}{lrrrr}
@@ -76,3 +76,7 @@ Especificamente no que tange os resultados obtidos com os atos do tipo PORT, a m
 	\includegraphics[scale=0.53]{resultados/matriz-confusao-port.png}
 	\fdp
 \end{figure}
+
+Uma hipótese de melhoria para o cenário em questão é a utilização de técnicas de \textit{oversampling} como o SMOTE\cite{Smote2002} para minimizar as distorções causadas pelo desbalanceamento das classes.
+
+Vale ressaltar que, mesmo diante dos problemas de classificação apresentados, os resultados podem ser considerados plenamente satisfatórios para os três tipos de ato, se confrontarmos os resultados obtidos com a alternativa atual do sistema Normas (classificação 100\% manual).   
