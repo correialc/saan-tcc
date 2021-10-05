@@ -1,6 +1,6 @@
 \section{Pré-processamento}
 
-O pré-processamento é a etapa responsável por ajustar a representação dos dados a um formato adequado aos algoritmos de aprendizado de máquina. Esta etapa contempla uma série de tarefas como remoção de pontuação, exclusão de \textit{stopwords}, tokenização,  \textit{steeming} e vetorização.
+O pré-processamento é a etapa responsável por ajustar a representação dos dados a um formato adequado aos algoritmos de aprendizado de máquina. Esta etapa contempla uma série de tarefas como remoção de pontuação, exclusão de \textit{stopwords}, tokenização,  \textit{stemming} e vetorização.
 
 A classe \textbf{Preprocessamento} (preprocessamento.py) realiza as tarefas necessárias ao pré-processamento dos dados. Seguindo a mesma lógica das etapas anteriores, o objeto de dados (instância da classe Dados) traz os dados provenientes da etapa de Limpeza (atributo \textbf{limp}) e armazena os resultados do pré-processamento no atributo \textbf{prep}.  
 
@@ -14,7 +14,7 @@ Caracteres de pontuação geralmente não contribuem com o resultado de algoritm
 
 \subsection{Tokenização}
 
-Tokenização é a tarefa de subdividir o texto em seus elementos fundamentais ou \textit{tokens}. A tokenização permite a identificação do conjunto de termos únicos que compõem o texto (o vocabulário), permitindo a aplicação de funções específicas termo-a-termo (como as funções de \textit{steeming}). Para realização da tokenização foi utilizada a biblioteca \textit{RegexpTokenizer} do NLTK que executa uma tokenização baseada em expressões regulares. Foram testados outras bibliotecas de tokenização do NLTK como o \textit{WhitespaceTokenizer} e o \textit{WordPunctTokenizer}, mas ambos apresentaram resultados inferiores de tokenização.
+Tokenização é a tarefa de subdividir o texto em seus elementos fundamentais ou \textit{tokens}. A tokenização permite a identificação do conjunto de termos únicos que compõem o texto (o vocabulário), permitindo a aplicação de funções específicas termo-a-termo (como as funções de \textit{stemming}). Para realização da tokenização foi utilizada a biblioteca \textit{RegexpTokenizer} do NLTK que executa uma tokenização baseada em expressões regulares. Foram testadas outras bibliotecas de tokenização do NLTK como \textit{WhitespaceTokenizer} e \textit{WordPunctTokenizer}, mas ambas apresentaram resultados inferiores de tokenização.
 
 \subsection{Stemming}
 

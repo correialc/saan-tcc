@@ -81,7 +81,7 @@ Os segmentos do tipo ``Não Identificado'' representam um ponto de atenção par
 Ao longo da análise exploratória foram identificados, em alguns tipos de segmento, padrões de texto  que podem ser utilizados como heurísticas baseadas em expressões regulares. Se essas heurísticas apresentarem resultados melhores do que o modelo de classificação, será possível retirar alguns tipos de segmento do escopo da classificação, deixando o modelo mais específico para as demais classes. A seguir são apresentados os padrões encontrados:
 
 \begin{alineas}
-	\item Ementas podem ser iniciadas por um verbo ou pela expressão ``Assunto: ''. Exemplo: ``Cancela o registro especial para estabelecimento que realiza operação com papel[...]'';
+	\item Ementas podem ser iniciadas por um verbo ou pela expressão ``Assunto:''. Exemplo: ``Cancela o registro especial para estabelecimento que realiza operação com papel[...]'';
 	\item Artigos iniciam com a abreviação ``Art.'' seguida de um numeral ordinal. Exemplo: ``Art. 2\textsuperscript{o} O detalhamento do motivo da exclusão poderá ser obtido[...]'';
 	\item Incisos são iniciados com um numeral romano seguido de hífem. Exemplo: ``IV – Fundamento legal para reconhecimento do direito[...]'';
 	\item Alíneas iniciam com letras (minúsculas ou maiúsculas) seguidas de parênteses. Exemplo: ``f) desempenhar as tarefas inerentes ao sistema de progressão funcional[...]'';
@@ -97,7 +97,7 @@ Ao longo da análise exploratória foram identificados, em alguns tipos de segme
 	\item Os segmentos do tipo Anexo podem ser removidos do conjunto de dados por não representarem conteúdo textual;
 	\item Os segmentos com valores ausentes são pouco representativos (0,06\% do total de segmentos) e podem ser removidos do conjunto de dados;
 	\item Será necessário tratar caracteres inválidos na etapa de limpeza;
-	\item Os tipos de ato ADE, SC e PORT representam 97,37\% do total de atos. O demais tipos de ato juntos são bem menos frequentes e os atos desses tipos podem ser removidos do conjunto de dados;	 
+	\item Os tipos de ato ADE, SC e PORT representam 97,37\% do total de atos. Os demais tipos de ato juntos são bem menos frequentes podem ser removidos do conjunto de dados;	 
 	\item Os tipos de segmento (variável alvo da classificação) variam de um tipo de ato para outro e isso precisa ser considerado nas etapas seguintes;
 	\item Existem padrões nos textos de alguns tipos de segmento que permitem a avaliação de heurísticas alternativas à utilização de algoritmos de classificação.
 \end{alineas}
