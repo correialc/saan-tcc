@@ -107,3 +107,8 @@ No que diz respeito ao tratamento do desbalanceamento das classes, foi utilizada
 \end{table}
 
 O desempenho, após o tratamento das classes desbalanceadas, foi superior para todos os tipos de ato, com destaque para o aumento de 7\% a 10\% nas métricas dos atos do tipo PORT. O resultado alcançado pode ser considerado satisfatório para os três tipos de ato.
+
+\subsection{Persistência dos Modelos}
+
+Os três modelos treinados e otimizados foram persistidos em arquivos (um para cada tipo de ato) de forma a permitir sua utilização a partir de aplicações, serviços e APIs. A classe \textbf{PersistenciaModelo} (persistencia\textunderscore modelo.py) é responsável por salvar um modelo em arquivo. Um objeto dessa classe é utilizado ao final do notebook \textit{fluxo-ml.ipynb} marcando o encerramento do fluxo de aprendizado de máquina. 
+
