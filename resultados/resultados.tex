@@ -125,7 +125,7 @@ A partir dos resultados obtidos, os tipos de segmento ``Artigo'', ``Alínea'', `
 	\item Eliminação das zonas de confusão associadas aos tipos os tipos de segmento ``Artigo'', ``Alínea'', ``Inciso'' e ``Parágrafo''.
 \end{alineas}  
 
-A figura \ref{tab:resultados-apos-classificacao-regex} apresenta os resultados da classificação, após a retirada dos tipos de segmento classificados através de expressão regulares. 
+A tabela \ref{tab:resultados-apos-classificacao-regex} apresenta os resultados da classificação, após a retirada dos tipos de segmento classificados através de expressão regulares. 
 
 \begin{table}[h]
 \caption{Resultados da classificação após a redução do número de  classes}
@@ -135,14 +135,15 @@ A figura \ref{tab:resultados-apos-classificacao-regex} apresenta os resultados d
 		\toprule
 		{} &  Acurácia &  Precisão &  Revocação &      F1-Score \\
 		\midrule
-		ADE     &    0.9720 &    0.9630 &     0.9649 &  0.9636 \\
-		SC      &    0.9780 &    0.9860 &     0.9619 &  0.9730 \\					PORT 	&    0.9197 &    0.9252 &     0.9197 &  0.9189 \\
+		ADE     &    0.9901 &    0.9903 &     0.9901 &  0.9901 \\
+		SC      &    0.9798 &    0.9803 &     0.9798 &  0.9797 \\					PORT 	&    0.9687 &    0.9710 &     0.9687 &  0.9685 \\
 		\bottomrule
 	\end{tabular}
 	\end{center}		
 \end{table}
 
-Os resultados alcançados foram considerados satisfatórios para os três tipos de ato e o processo de otimização foi concluído.
+
+Comparando os resultados das tabelas \ref{tab:resultados-oversampling} e \ref{tab:resultados-apos-classificacao-regex}, é possível perceber que  o desempenho foi significativamente superior para atos do tipo PORT (aprimadamente 5\%), ligeiramente superior para os atos ADE (em torno 0,5\%) e indiferente para os atos SC (esse tipo de ato já possuia somente três classes). Os resultados alcançados foram considerados satisfatórios e o processo de otimização foi concluído.
 
 \subsection{Persistência dos Modelos}
 
