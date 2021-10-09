@@ -67,9 +67,9 @@ Se for considerado somente o melhor resultado (\textit{LinearSVC} com validaçã
 	\fdp
 \end{figure}
 
-A figura \ref{fig:matriz-confusao-ade} evidencia que a zona de maior confusão para os atos ADE está relacionada aos segmentos do tipo ``Não Identificado''. É possível perceber que os segmentos não identificados se confundiram com todos os outros tipos de segmento, gerando tanto falsos positivos quanto falsos negativos. Um resultado pior para a classificação de segmentos não identificados já era esperado, em virtude da natureza desse tipo de segmento, conforme discutido na seção \ref{sec:dist-atos-segmentos} da análise exploratória. Esse foi um problema que afetou não somente os atos do tipo ADE, mas também os atos SC e PORT. A situação dos segmentos não identificados indica a necessidade de abordagens adicionais que extrapolam o escopo da presente pesquisa, como a utilização de estratégias não supervisionadas para melhor entendimento da natureza dos dados desse tipo de segmento. Outra possibilidade é a indicação de uma revisão manual dos segmentos não identificados para correção de possíveis omissões na classificação original realizada manualmente.
+A figura \ref{fig:matriz-confusao-ade} evidencia que a zona de maior confusão para os atos ADE está relacionada aos segmentos do tipo ``Não Identificado''. É possível perceber que os segmentos não identificados se confundiram com todos os outros tipos de segmento, gerando tanto falsos positivos quanto falsos negativos. Um resultado inferior para a classificação de segmentos não identificados já era esperado, em virtude da natureza desse tipo de segmento, conforme discutido na seção \ref{sec:dist-atos-segmentos} da análise exploratória. Esse foi um problema que afetou não somente os atos do tipo ADE, mas também os atos SC e PORT. A situação dos segmentos não identificados indica a necessidade de abordagens adicionais que extrapolam o escopo da presente pesquisa, como a utilização de estratégias não supervisionadas para melhor entendimento da natureza dos dados desse tipo de segmento. Outra possibilidade é a indicação de uma revisão manual dos segmentos não identificados para correção de possíveis omissões na classificação original realizada manualmente.
 
-Especificamente no que tange os resultados obtidos com os atos do tipo PORT, a matriz de confusão (figura \ref{fig:matriz-confusao-port}) indica que, além do problema com os segmentos não identificados, houve confusão entre os segmentos dos tipos ``Alínea'', ``Inciso'' e ``Parágrafo''. Os atos PORT possuem uma representatividade maior dos tipos de segmento em questão em comparação com os atos ADE e SC. Além disso, esse é o tipo de ato com maior número de classes com 7 tipos de segmento, enquanto os atos ADE possuem 5 e os atos SC possuem 3.
+Especificamente no que tange os resultados obtidos com os atos do tipo PORT, a matriz de confusão (figura \ref{fig:matriz-confusao-port}) indica que, além do problema com os segmentos não identificados, houve confusão entre os segmentos dos tipos ``Alínea'', ``Inciso'' e ``Parágrafo''. Os atos PORT possuem uma representatividade maior dos referidos tipos de segmento em comparação com os atos ADE e SC. Além disso, esse é o tipo de ato com maior número de classes possuindo 7 tipos de segmento, enquanto os atos ADE possuem 5 e os atos SC possuem 3.
 
 \begin{figure}[h]
 	\caption{Matriz de confusão para atos do tipo PORT}
@@ -81,7 +81,7 @@ Especificamente no que tange os resultados obtidos com os atos do tipo PORT, a m
 
 \subsection{Otimização dos Resultados}
 
-Visando melhorar o desempenho dos modelos, foram adotadas três estratégias: otimização de hiperparâmetros, a utilização de uma técnica de \textit{oversampling} para minimizar as distorções causadas pelo desbalanceamento das classes e a classificação de alguns tipos de segmentos com base em expressões regulares.
+Visando melhorar o desempenho dos modelos, foram adotadas três estratégias: a otimização de hiperparâmetros, a utilização de uma técnica de \textit{oversampling} para minimizar as distorções causadas pelo desbalanceamento das classes e a classificação de alguns tipos de segmentos com base em expressões regulares.
 
 \subsubsection{Otimização de Hiperparâmetros}
 
@@ -116,13 +116,13 @@ O desempenho, após o tratamento das classes desbalanceadas, foi superior para t
 
 Durante a análise exploratória, foram identificados alguns padrões, através de expressões regulares, para os segmentos dos tipos ``Artigo'', ``Alínea'', ``Inciso'' e ``Parágrafo'' (seção \ref{sec:identificacao-padroes-regex}). Esses tipos são particularmente importantes por terem gerado falsos positivos e falsos negativos entre si e com o tipo ``Não Identificado''.
 
-Para execução dessa estratégia de otimização, foram realizados alguns experimentos, registrados no notebook \textit{classificacao-padroes-regex.ipynb}, com o objetivo de medir a eficiência da classificação baseada nos padrões encontrados. Os resultados revelaram uma eficiência entre 99,86\% e 100,00\%, com base nas mesmas métricas utilizadas anterioremnte (acurácia,  precisão, revocação e f1-score).
+Para execução dessa estratégia de otimização, foram realizados alguns experimentos, registrados no notebook \textbf{classificacao-padroes-regex.ipynb}, com o objetivo de medir a eficiência da classificação baseada nos padrões encontrados. Os resultados revelaram uma eficiência variando entre 99,86\% e 100,00\%, com base nas mesmas métricas utilizadas anteriormente (acurácia,  precisão, revocação e f1-score).
 
 A partir dos resultados obtidos, os tipos de segmento ``Artigo'', ``Alínea'', ``Inciso'' e ``Parágrafo'' foram retirados do fluxo de aprendizado de máquina, trazendo como consequência os seguintes benefícios:
 \begin{alineas}
-	\item Redução do número de classes envolvidas no processo de classificação, restando somente os tipos de segmento ``Ementa'', ``Fecho'' e ``Não dientificado'';
+	\item Redução do número de classes envolvidas no processo de classificação, restando somente os tipos de segmento ``Ementa'', ``Fecho'' e ``Não Identificado'';
 	\item Possibilidade de resgate dos segmentos com classificação omissa, erroneamente classificados como ``Não Identificados'';
-	\item Eliminação das zonas de confusão associadas aos tipos os tipos de segmento ``Artigo'', ``Alínea'', ``Inciso'' e ``Parágrafo''.
+	\item Eliminação das zonas de confusão associadas aos tipos de segmento ``Artigo'', ``Alínea'', ``Inciso'' e ``Parágrafo''.
 \end{alineas}  
 
 A tabela \ref{tab:resultados-apos-classificacao-regex} apresenta os resultados da classificação, após a retirada dos tipos de segmento classificados através de expressão regulares. 
@@ -143,7 +143,7 @@ A tabela \ref{tab:resultados-apos-classificacao-regex} apresenta os resultados d
 \end{table}
 
 
-Comparando os resultados das tabelas \ref{tab:resultados-oversampling} e \ref{tab:resultados-apos-classificacao-regex}, é possível perceber que  o desempenho foi significativamente superior para atos do tipo PORT (aprimadamente 5\%), ligeiramente superior para os atos ADE (em torno 0,5\%) e indiferente para os atos SC (esse tipo de ato já possuia somente três classes). Os resultados alcançados foram considerados satisfatórios e o processo de otimização foi concluído.
+Comparando os resultados das tabelas \ref{tab:resultados-oversampling} e \ref{tab:resultados-apos-classificacao-regex}, é possível perceber que  o desempenho foi significativamente superior para atos do tipo PORT (aproximadamente 5\% melhor), ligeiramente superior para os atos ADE (em torno 0,5\% melhor) e indiferente para os atos SC (esse tipo de ato já possuia somente três classes). Os resultados alcançados foram considerados satisfatórios e o processo de otimização foi concluído.
 
 \subsection{Persistência dos Modelos}
 
