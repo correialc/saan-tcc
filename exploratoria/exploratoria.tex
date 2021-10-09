@@ -76,17 +76,15 @@ Outro ponto importante analisado foi a distribuição dos segmentos por tipo de 
 
 Os segmentos do tipo ``Não Identificado'' representam um ponto de atenção para a classificação dos segmentos. Por ser o tipo padrão de segmento do sistema Normas, sempre que ocorre falha humana por omissão na classificação manual, o segmento fica classificado como ``Não Identificado''. Apesar disso, essa é uma classe válida de segmento amplamente utilizada para representar trechos do ato que não precisam de formatação específica. Por estar entre os tipos mais frequentes de segmento e ser um tipo válido, os segmentos desse tipo não podem ser removidos do escopo da classificação, mas a presença de segmentos com classificação omissa pode prejudicar os resultados dos modelos.
 
-\subsection{Identificação de Padrões}
+\subsection{Identificação de Padrões\label{sec:identificacao-padroes-regex}}
 
 Ao longo da análise exploratória foram identificados, em alguns tipos de segmento, padrões de texto  que podem ser utilizados como heurísticas baseadas em expressões regulares. Se essas heurísticas apresentarem resultados melhores do que o modelo de classificação, será possível retirar alguns tipos de segmento do escopo da classificação, deixando o modelo mais específico para as demais classes. A seguir são apresentados os padrões encontrados:
 
 \begin{alineas}
-	\item Ementas podem ser iniciadas por um verbo ou pela expressão ``Assunto:''. Exemplo: ``Cancela o registro especial para estabelecimento que realiza operação com papel[...]'';
 	\item Artigos iniciam com a abreviação ``Art.'' seguida de um numeral ordinal. Exemplo: ``Art. 2\textsuperscript{o} O detalhamento do motivo da exclusão poderá ser obtido[...]'';
 	\item Incisos são iniciados com um numeral romano seguido de hífem. Exemplo: ``IV – Fundamento legal para reconhecimento do direito[...]'';
 	\item Alíneas iniciam com letras (minúsculas ou maiúsculas) seguidas de parênteses. Exemplo: ``f) desempenhar as tarefas inerentes ao sistema de progressão funcional[...]'';
-	\item Parágrafos podem ser iniciados com a expressão ``Parágrafo único'' ou com o símbolo ``§'' seguido de um numeral ordinal. Exemplo: ``§ 2\textsuperscript{o} Compete à chefia imediata a gestão da frequência dos seus servidores[...]'';
-	\item Fechos são iniciados com nomes próprios, seguidos ou não pelo cargo.
+	\item Parágrafos podem ser iniciados com a expressão ``Parágrafo único'' ou com o símbolo ``§'' seguido de um numeral ordinal. Exemplo: ``§ 2\textsuperscript{o} Compete à chefia imediata a gestão da frequência dos seus servidores[...]''.
 \end{alineas}
 
  \subsection{Conclusões da Análise Exploratória}

@@ -81,9 +81,13 @@ Especificamente no que tange os resultados obtidos com os atos do tipo PORT, a m
 
 \subsection{Otimização dos Resultados}
 
-Visando melhorar o desempenho dos modelos, foram adotadas duas estratégias: otimização de hiperparâmetros e a utilização de uma técnica de \textit{oversampling} para minimizar as distorções causadas pelo desbalanceamento das classes.
+Visando melhorar o desempenho dos modelos, foram adotadas três estratégias: otimização de hiperparâmetros, a utilização de uma técnica de \textit{oversampling} para minimizar as distorções causadas pelo desbalanceamento das classes e a classificação de alguns tipos de segmentos com base em expressões regulares.
+
+\subsubsection{Otimização de Hiperparâmetros}
 
 Para otimização de hiperparâmetros, foi utilizado o \textit{GridSearchCV}, um módulo da biblioteca \textit{SciKit-Learn} que permite avaliar diferentes combinações de hiperparâmetros de um  algoritmo de aprendizado de máquina. A combinação de hiperparâmetros do algoritmo \textit{LinearSVC} sugerida pelo \textit{GridSearch} foi justamente aquela que já vinha sendo utilizada, logo, não houve progresso nos resultados a partir dessa abordagem.
+
+\subsubsection{Tratamento de Classes Desbalanceadas}
 
 No que diz respeito ao tratamento do desbalanceamento das classes, foi utilizada a técnica SMOTE\cite{Smote2002} que sintetiza novos exemplos de dados para as classes minoritárias a partir de dados existentes no conjunto de dados original. A tabela \ref{tab:resultados-oversampling} apresenta os resultados da aplicação da técnica SMOTE:
 
@@ -106,7 +110,39 @@ No que diz respeito ao tratamento do desbalanceamento das classes, foi utilizada
 	\end{center}		
 \end{table}
 
-O desempenho, após o tratamento das classes desbalanceadas, foi superior para todos os tipos de ato, com destaque para o aumento de 7\% a 10\% nas métricas dos atos do tipo PORT. O resultado alcançado pode ser considerado satisfatório para os três tipos de ato.
+O desempenho, após o tratamento das classes desbalanceadas, foi superior para todos os tipos de ato, com destaque para o aumento de 7\% a 10\% nas métricas dos atos do tipo PORT.
+
+\subsubsection{Classificação baseada em Expressões Regulares}
+
+Durante a análise exploratória, foram identificados alguns padrões, através de expressões regulares, para os segmentos dos tipos ``Artigo'', ``Alínea'', ``Inciso'' e ``Parágrafo'' (seção \ref{sec:identificacao-padroes-regex}). Esses tipos são particularmente importantes por terem gerado falsos positivos e falsos negativos entre si e com o tipo ``Não Identificado''.
+
+Para execução dessa estratégia de otimização, foram realizados alguns experimentos, registrados no notebook \textit{classificacao-padroes-regex.ipynb}, com o objetivo de medir a eficiência da classificação baseada nos padrões encontrados. Os resultados revelaram uma eficiência entre 99,86\% e 100,00\%, com base nas mesmas métricas utilizadas anterioremnte (acurácia,  precisão, revocação e f1-score).
+
+A partir dos resultados obtidos, os tipos de segmento ``Artigo'', ``Alínea'', ``Inciso'' e ``Parágrafo'' foram retirados do fluxo de aprendizado de máquina, trazendo como consequência os seguintes benefícios:
+\begin{alineas}
+	\item Redução do número de classes envolvidas no processo de classificação, restando somente os tipos de segmento ``Ementa'', ``Fecho'' e ``Não dientificado'';
+	\item Possibilidade de resgate dos segmentos com classificação omissa, erroneamente classificados como ``Não Identificados'';
+	\item Eliminação das zonas de confusão associadas aos tipos os tipos de segmento ``Artigo'', ``Alínea'', ``Inciso'' e ``Parágrafo''.
+\end{alineas}  
+
+A figura \ref{tab:resultados-apos-classificacao-regex} apresenta os resultados da classificação, após a retirada dos tipos de segmento classificados através de expressão regulares. 
+
+\begin{table}[h]
+\caption{Resultados da classificação após a redução do número de  classes}
+\label{tab:resultados-apos-classificacao-regex}
+	\begin{center}
+	\begin{tabular}{lrrrr}
+		\toprule
+		{} &  Acurácia &  Precisão &  Revocação &      F1-Score \\
+		\midrule
+		ADE     &    0.9720 &    0.9630 &     0.9649 &  0.9636 \\
+		SC      &    0.9780 &    0.9860 &     0.9619 &  0.9730 \\					PORT 	&    0.9197 &    0.9252 &     0.9197 &  0.9189 \\
+		\bottomrule
+	\end{tabular}
+	\end{center}		
+\end{table}
+
+Os resultados alcançados foram considerados satisfatórios para os três tipos de ato e o processo de otimização foi concluído.
 
 \subsection{Persistência dos Modelos}
 
