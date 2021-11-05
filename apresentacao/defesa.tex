@@ -1,0 +1,51 @@
+\documentclass[t]{beamer}
+
+\usepackage{txfonts}			% Fontes virtuais
+\usepackage[T1]{fontenc}		% Selecao de codigos de fonte.
+\usepackage[utf8]{inputenc}		% Codificacao do documento (acentos)
+\usepackage[brazil]{babel}		% Idioma do documento
+
+\usepackage{graphicx}			% Inclusão de gráficos
+\usepackage[labelformat=empty]{caption}
+\usepackage{ragged2e}			% Texto justificado
+
+% Configuracoes do Beamer com tema Metropolis
+
+\usetheme{metropolis}
+\metroset{block=fill}
+
+\setbeamertemplate{bibliography item}{\insertbiblabel}
+\setbeamerfont{bibliography item}{size=\footnotesize}
+\setbeamerfont{bibliography entry author}{size=\footnotesize}
+\setbeamerfont{bibliography entry title}{size=\footnotesize}
+\setbeamerfont{bibliography entry location}{size=\footnotesize}
+\setbeamerfont{bibliography entry note}{size=\footnotesize}
+
+% Reduzir tamanho das notas de rodape
+\setbeamertemplate{footnote}{%
+  \tiny%
+  \parindent 1em\noindent%
+  \raggedright
+  \hbox to 1.8em{\hfil\insertfootnotemark}\insertfootnotetext\par%
+}%
+\setlength\footnotesep{0pt}
+
+\apptocmd{\frame}{}{\justifying}{}
+
+\captionsetup[figure]{font=footnotesize}
+\setlength{\abovecaptionskip}{1pt}
+\setlength{\belowcaptionskip}{0pt}
+
+%---
+
+\title{CLASSIFICAÇÃO DOS SEGMENTOS DE ATOS NORMATIVOS ATRAVÉS DO PROCESSAMENTO DE LINGUAGEM NATURAL}
+\date{Novembro, 2021}
+\author{Leandro Coelho Correia}
+
+\begin{document}
+\maketitle
+
+\bibliographystyle{acm}
+\bibliography{defesa-referencias}
+
+\end{document}
